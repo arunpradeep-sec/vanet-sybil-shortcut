@@ -1,0 +1,114 @@
+loading test streams
+loading training data
+loaded in 46s
+  P1 NG -> Ext (all types)      B seed0 MCC= 31.3 TPR@1= 13.3 ps-TPR= 41.6 ps-FPR=  6.5
+  P1 NG -> NG test              B seed0 MCC= 98.8 TPR@1= 99.8 ps-TPR= 99.8 ps-FPR=  1.4
+  P2 Ext non-Grid -> Grid 0709  B seed0 MCC=  7.3 TPR@1=  4.0 ps-TPR= 11.0 ps-FPR= 10.1
+  P2 Ext non-Grid -> seen 0709  B seed0 MCC= 93.8 TPR@1= 85.1 ps-TPR= 99.1 ps-FPR= 16.0
+  P1 NG -> Ext (all types)      A seed0 MCC= 52.3 TPR@1= 10.7 ps-TPR= 89.5 ps-FPR= 24.4
+  P1 NG -> NG test              A seed0 MCC= 96.0 TPR@1= 98.8 ps-TPR= 99.8 ps-FPR=  1.9
+  P2 Ext non-Grid -> Grid 0709  A seed0 MCC= 34.9 TPR@1= 31.5 ps-TPR= 24.4 ps-FPR= 10.8
+  P2 Ext non-Grid -> seen 0709  A seed0 MCC= 93.2 TPR@1= 85.0 ps-TPR= 99.3 ps-FPR= 16.4
+  P1 NG -> Ext (all types)      F seed0 MCC= 27.4 TPR@1=  9.8 ps-TPR= 40.0 ps-FPR= 10.1
+  P1 NG -> NG test              F seed0 MCC= 98.1 TPR@1= 97.6 ps-TPR= 99.7 ps-FPR=  2.4
+  P2 Ext non-Grid -> Grid 0709  F seed0 MCC= 23.4 TPR@1= 16.6 ps-TPR= 15.6 ps-FPR= 12.3
+  P2 Ext non-Grid -> seen 0709  F seed0 MCC= 92.7 TPR@1= 81.6 ps-TPR= 99.2 ps-FPR= 17.2
+  P1 NG -> Ext (all types)      R seed0 MCC= 44.2 TPR@1= 17.1 ps-TPR= 50.4 ps-FPR= 11.6
+  P1 NG -> NG test              R seed0 MCC= 94.5 TPR@1= 92.2 ps-TPR= 99.8 ps-FPR=  3.1
+  P2 Ext non-Grid -> Grid 0709  R seed0 MCC= 34.4 TPR@1= 32.9 ps-TPR= 24.3 ps-FPR= 11.1
+  P2 Ext non-Grid -> seen 0709  R seed0 MCC= 92.7 TPR@1= 81.5 ps-TPR= 99.1 ps-FPR= 16.7
+  E4a Ext -> NG test             B seed0 MCC= 82.0 TPR@1= 54.9 ps-TPR= 99.7 ps-FPR= 22.1
+  E4a Ext -> NG test             F seed0 MCC= 60.1 TPR@1= 15.4 ps-TPR= 96.7 ps-FPR= 33.6
+  P1 NG -> Ext (all types)      B seed1 MCC= 32.6 TPR@1= 13.9 ps-TPR= 45.9 ps-FPR=  7.2
+  P1 NG -> NG test              B seed1 MCC= 98.8 TPR@1= 99.8 ps-TPR= 99.8 ps-FPR=  1.5
+  P2 Ext non-Grid -> Grid 0709  B seed1 MCC=  5.9 TPR@1=  2.7 ps-TPR= 12.2 ps-FPR=  6.1
+  P2 Ext non-Grid -> seen 0709  B seed1 MCC= 95.1 TPR@1= 92.6 ps-TPR= 99.0 ps-FPR=  6.3
+  P1 NG -> Ext (all types)      A seed1 MCC= 53.1 TPR@1= 17.1 ps-TPR= 90.7 ps-FPR= 24.3
+  P1 NG -> NG test              A seed1 MCC= 95.7 TPR@1= 98.5 ps-TPR= 99.8 ps-FPR=  2.0
+  P2 Ext non-Grid -> Grid 0709  A seed1 MCC= 33.1 TPR@1= 27.1 ps-TPR= 22.1 ps-FPR=  7.6
+  P2 Ext non-Grid -> seen 0709  A seed1 MCC= 94.9 TPR@1= 92.0 ps-TPR= 99.0 ps-FPR=  6.5
+  P1 NG -> Ext (all types)      F seed1 MCC= 31.0 TPR@1= 10.3 ps-TPR= 48.6 ps-FPR= 10.4
+  P1 NG -> NG test              F seed1 MCC= 97.9 TPR@1= 96.4 ps-TPR= 99.7 ps-FPR=  2.6
+  P2 Ext non-Grid -> Grid 0709  F seed1 MCC= 26.2 TPR@1= 17.7 ps-TPR= 19.9 ps-FPR=  9.6
+  P2 Ext non-Grid -> seen 0709  F seed1 MCC= 94.4 TPR@1= 86.9 ps-TPR= 99.4 ps-FPR=  8.2
+  P1 NG -> Ext (all types)      R seed1 MCC= 47.0 TPR@1= 19.4 ps-TPR= 57.9 ps-FPR= 12.7
+  P1 NG -> NG test              R seed1 MCC= 94.9 TPR@1= 92.6 ps-TPR= 99.7 ps-FPR=  3.6
+  P2 Ext non-Grid -> Grid 0709  R seed1 MCC= 34.4 TPR@1= 28.2 ps-TPR= 25.7 ps-FPR= 10.3
+  P2 Ext non-Grid -> seen 0709  R seed1 MCC= 94.1 TPR@1= 86.2 ps-TPR= 99.6 ps-FPR=  8.4
+  E4a Ext -> NG test             B seed1 MCC= 90.3 TPR@1= 61.9 ps-TPR= 99.7 ps-FPR= 15.1
+  E4a Ext -> NG test             F seed1 MCC= 67.0 TPR@1= 12.0 ps-TPR= 98.8 ps-FPR= 31.5
+  P1 NG -> Ext (all types)      B seed2 MCC= 31.9 TPR@1= 13.8 ps-TPR= 44.2 ps-FPR=  7.8
+  P1 NG -> NG test              B seed2 MCC= 98.6 TPR@1= 99.6 ps-TPR= 99.8 ps-FPR=  1.9
+  P2 Ext non-Grid -> Grid 0709  B seed2 MCC=  8.3 TPR@1=  3.8 ps-TPR= 11.2 ps-FPR=  4.6
+  P2 Ext non-Grid -> seen 0709  B seed2 MCC= 93.3 TPR@1= 75.5 ps-TPR= 99.2 ps-FPR= 25.8
+  P1 NG -> Ext (all types)      A seed2 MCC= 52.1 TPR@1= 13.8 ps-TPR= 88.8 ps-FPR= 24.5
+  P1 NG -> NG test              A seed2 MCC= 96.4 TPR@1= 98.0 ps-TPR= 99.5 ps-FPR=  2.0
+  P2 Ext non-Grid -> Grid 0709  A seed2 MCC= 36.4 TPR@1= 30.6 ps-TPR= 19.6 ps-FPR=  5.3
+  P2 Ext non-Grid -> seen 0709  A seed2 MCC= 93.3 TPR@1= 76.8 ps-TPR= 99.3 ps-FPR= 26.0
+  P1 NG -> Ext (all types)      F seed2 MCC= 27.3 TPR@1= 10.0 ps-TPR= 38.9 ps-FPR=  9.8
+  P1 NG -> NG test              F seed2 MCC= 97.5 TPR@1= 94.0 ps-TPR= 99.6 ps-FPR=  3.1
+  P2 Ext non-Grid -> Grid 0709  F seed2 MCC= 26.2 TPR@1= 17.5 ps-TPR= 16.9 ps-FPR=  7.2
+  P2 Ext non-Grid -> seen 0709  F seed2 MCC= 92.2 TPR@1= 75.7 ps-TPR= 99.2 ps-FPR= 26.2
+  P1 NG -> Ext (all types)      R seed2 MCC= 42.7 TPR@1= 18.5 ps-TPR= 45.2 ps-FPR= 11.9
+  P1 NG -> NG test              R seed2 MCC= 94.2 TPR@1= 89.7 ps-TPR= 99.6 ps-FPR=  4.1
+  P2 Ext non-Grid -> Grid 0709  R seed2 MCC= 35.3 TPR@1= 30.7 ps-TPR= 21.1 ps-FPR=  7.3
+  P2 Ext non-Grid -> seen 0709  R seed2 MCC= 92.4 TPR@1= 75.2 ps-TPR= 99.1 ps-FPR= 25.8
+  E4a Ext -> NG test             B seed2 MCC= 59.7 TPR@1= 28.0 ps-TPR= 99.7 ps-FPR= 57.2
+  E4a Ext -> NG test             F seed2 MCC= 53.9 TPR@1=  5.2 ps-TPR= 97.6 ps-FPR= 50.4
+  P1 NG -> Ext (all types)      B seed3 MCC= 30.6 TPR@1= 14.8 ps-TPR= 40.3 ps-FPR=  5.6
+  P1 NG -> NG test              B seed3 MCC= 98.8 TPR@1= 99.8 ps-TPR= 99.7 ps-FPR=  1.3
+  P2 Ext non-Grid -> Grid 0709  B seed3 MCC=  6.7 TPR@1=  3.6 ps-TPR= 10.8 ps-FPR=  6.5
+  P2 Ext non-Grid -> seen 0709  B seed3 MCC= 95.0 TPR@1= 90.5 ps-TPR= 98.8 ps-FPR= 12.3
+  P1 NG -> Ext (all types)      A seed3 MCC= 52.4 TPR@1= 12.1 ps-TPR= 92.3 ps-FPR= 26.0
+  P1 NG -> NG test              A seed3 MCC= 95.3 TPR@1= 98.2 ps-TPR= 99.9 ps-FPR=  2.1
+  P2 Ext non-Grid -> Grid 0709  A seed3 MCC= 37.8 TPR@1= 31.1 ps-TPR= 24.0 ps-FPR=  8.0
+  P2 Ext non-Grid -> seen 0709  A seed3 MCC= 94.5 TPR@1= 89.9 ps-TPR= 99.3 ps-FPR= 13.5
+  P1 NG -> Ext (all types)      F seed3 MCC= 31.9 TPR@1= 10.6 ps-TPR= 51.5 ps-FPR= 10.8
+  P1 NG -> NG test              F seed3 MCC= 97.8 TPR@1= 96.3 ps-TPR= 99.7 ps-FPR=  2.5
+  P2 Ext non-Grid -> Grid 0709  F seed3 MCC= 30.0 TPR@1= 20.0 ps-TPR= 20.6 ps-FPR= 10.0
+  P2 Ext non-Grid -> seen 0709  F seed3 MCC= 93.8 TPR@1= 84.2 ps-TPR= 98.8 ps-FPR= 13.3
+  P1 NG -> Ext (all types)      R seed3 MCC= 47.4 TPR@1= 21.8 ps-TPR= 53.3 ps-FPR= 12.9
+  P1 NG -> NG test              R seed3 MCC= 94.2 TPR@1= 91.1 ps-TPR= 99.8 ps-FPR=  3.5
+  P2 Ext non-Grid -> Grid 0709  R seed3 MCC= 37.1 TPR@1= 32.8 ps-TPR= 26.7 ps-FPR= 11.0
+  P2 Ext non-Grid -> seen 0709  R seed3 MCC= 93.4 TPR@1= 83.8 ps-TPR= 99.4 ps-FPR= 14.2
+  E4a Ext -> NG test             B seed3 MCC= 90.1 TPR@1= 79.3 ps-TPR= 99.9 ps-FPR= 15.5
+  E4a Ext -> NG test             F seed3 MCC= 61.9 TPR@1= 10.6 ps-TPR= 98.7 ps-FPR= 39.6
+  P1 NG -> Ext (all types)      B seed4 MCC= 28.3 TPR@1= 12.3 ps-TPR= 36.7 ps-FPR=  6.2
+  P1 NG -> NG test              B seed4 MCC= 98.9 TPR@1= 99.8 ps-TPR= 99.7 ps-FPR=  1.4
+  P2 Ext non-Grid -> Grid 0709  B seed4 MCC=  5.1 TPR@1=  2.7 ps-TPR= 10.8 ps-FPR=  6.1
+  P2 Ext non-Grid -> seen 0709  B seed4 MCC= 94.2 TPR@1= 83.7 ps-TPR= 99.5 ps-FPR= 21.5
+  P1 NG -> Ext (all types)      A seed4 MCC= 51.7 TPR@1= 14.6 ps-TPR= 90.4 ps-FPR= 26.6
+  P1 NG -> NG test              A seed4 MCC= 97.0 TPR@1= 98.4 ps-TPR= 99.7 ps-FPR=  1.9
+  P2 Ext non-Grid -> Grid 0709  A seed4 MCC= 41.2 TPR@1= 39.2 ps-TPR= 18.7 ps-FPR=  6.3
+  P2 Ext non-Grid -> seen 0709  A seed4 MCC= 94.0 TPR@1= 82.3 ps-TPR= 99.4 ps-FPR= 21.2
+  P1 NG -> Ext (all types)      F seed4 MCC= 26.7 TPR@1=  9.6 ps-TPR= 38.9 ps-FPR=  9.7
+  P1 NG -> NG test              F seed4 MCC= 98.0 TPR@1= 96.8 ps-TPR= 99.7 ps-FPR=  2.7
+  P2 Ext non-Grid -> Grid 0709  F seed4 MCC= 32.8 TPR@1= 26.4 ps-TPR= 16.4 ps-FPR=  8.1
+  P2 Ext non-Grid -> seen 0709  F seed4 MCC= 93.4 TPR@1= 79.9 ps-TPR= 99.4 ps-FPR= 22.9
+  P1 NG -> Ext (all types)      R seed4 MCC= 49.6 TPR@1= 21.2 ps-TPR= 59.6 ps-FPR= 14.5
+  P1 NG -> NG test              R seed4 MCC= 94.4 TPR@1= 90.7 ps-TPR= 99.7 ps-FPR=  3.8
+  P2 Ext non-Grid -> Grid 0709  R seed4 MCC= 40.2 TPR@1= 39.1 ps-TPR= 21.9 ps-FPR=  9.4
+  P2 Ext non-Grid -> seen 0709  R seed4 MCC= 93.1 TPR@1= 79.7 ps-TPR= 99.6 ps-FPR= 23.1
+  E4a Ext -> NG test             B seed4 MCC= 93.2 TPR@1= 49.7 ps-TPR= 99.6 ps-FPR=  9.6
+  E4a Ext -> NG test             F seed4 MCC= 62.6 TPR@1= 11.5 ps-TPR= 98.5 ps-FPR= 26.2
+                                        mcc  tpr1  ps_tpr_majority  ps_fpr_majority
+exp setting                   variant                                              
+P1  NG -> Ext (all types)     B        30.9  13.6             41.7              6.7
+    NG -> NG test             B        98.8  99.8             99.8              1.5
+P2  Ext non-Grid -> Grid 0709 B         6.7   3.4             11.2              6.7
+    Ext non-Grid -> seen 0709 B        94.3  85.5             99.1             16.4
+P1  NG -> Ext (all types)     A        52.3  13.7             90.4             25.2
+    NG -> NG test             A        96.1  98.4             99.8              2.0
+P2  Ext non-Grid -> Grid 0709 A        36.7  31.9             21.8              7.6
+    Ext non-Grid -> seen 0709 A        94.0  85.2             99.3             16.7
+P1  NG -> Ext (all types)     F        28.9  10.0             43.6             10.2
+    NG -> NG test             F        97.9  96.2             99.7              2.6
+P2  Ext non-Grid -> Grid 0709 F        27.7  19.6             17.9              9.5
+    Ext non-Grid -> seen 0709 F        93.3  81.7             99.2             17.6
+P1  NG -> Ext (all types)     R        46.2  19.6             53.3             12.7
+    NG -> NG test             R        94.4  91.3             99.7              3.6
+P2  Ext non-Grid -> Grid 0709 R        36.3  32.7             23.9              9.8
+    Ext non-Grid -> seen 0709 R        93.1  81.3             99.4             17.6
+E4a Ext -> NG test            B        83.1  54.8             99.7             23.9
+                              F        61.1  10.9             98.0             36.3
+Done in 4 min

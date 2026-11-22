@@ -3,19 +3,20 @@ T0=time.time()
 lg=FunctionTransformer(lambda X: np.sign(X)*np.log1p(np.abs(X)))
 Z={'LR':lambda: make_pipeline(lg,StandardScaler(),LogisticRegression(max_iter=500)),
    'NB':lambda: make_pipeline(lg,GaussianNB()),
-   'DT':lambda: DecisionTreeClassifier(min_samples_leaf=20,random_state=0),
+   'DT':lambda: DecisionTreeClassifier(min_samples_leaf=20,random_state=SEED),
    'kNN':lambda: make_pipeline(lg,StandardScaler(),KNeighborsClassifier(15,n_jobs=-1)),
-   'MLP':lambda: make_pipeline(lg,StandardScaler(),MLPClassifier((64,64),early_stopping=True,max_iter=200,random_state=0)),
-   'ET':lambda: ExtraTreesClassifier(100,min_samples_leaf=2,n_jobs=-1,random_state=0),
-   'RF':lambda: RandomForestClassifier(100,min_samples_leaf=2,max_samples=0.3,n_jobs=-1,random_state=0),
+   'MLP':lambda: make_pipeline(lg,StandardScaler(),MLPClassifier((64,64),early_stopping=True,max_iter=200,random_state=SEED)),
+   'ET':lambda: ExtraTreesClassifier(100,min_samples_leaf=2,n_jobs=-1,random_state=SEED),
+   'RF':lambda: RandomForestClassifier(100,min_samples_leaf=2,max_samples=0.3,n_jobs=-1,random_state=SEED),
    'HGB':lambda: hgb()}
-rows=[]
+rows=[]; ZP={}
 for s in SET:
-    tr,va,te=SET[s]; tr=tr.sample(min(60000,len(tr)),random_state=0); te=te.sample(min(60000,len(te)),random_state=0)
+    tr,va,te=SET[s]; tr=tr.sample(min(60000,len(tr)),random_state=SEED); te=te.sample(min(60000,len(te)),random_state=SEED)
     for nm,f in Z.items():
         t0=time.time(); m=f().fit(tr[ALL].values,tr.label.values); pv=m.predict_proba(va[ALL].values)[:,1]; pt=m.predict_proba(te[ALL].values)[:,1]
-        rows.append(dict(setting=s,model=nm,sec=time.time()-t0,**mets(te.label.values,pt,f1thr(va.label.values,pv)))); print(s,nm,rows[-1]['mcc'],flush=True)
+        ZP[f'{s}_{nm}']=pt; rows.append(dict(setting=s,model=nm,sec=time.time()-t0,**mets(te.label.values,pt,f1thr(va.label.values,pv)))); print(s,nm,rows[-1]['mcc'],flush=True)
     pd.DataFrame(rows).to_csv(O+'A5_zoo.csv',index=False)
+np.savez_compressed(O+'preds_zoo.npz',**ZP)
 # ---------- A11 detection delay + pseudonym aggregation on receiver blocks
 B['ds']=np.where(B.subset.str.startswith('ext'),'ext','ng')
 blk={'E2':B[B.ds=='ext'],'E3':B[B.ds=='ng'],'E4a':B[B.ds=='ng'],'E4b':B[B.ds=='ext']}
@@ -40,11 +41,11 @@ PH=['spd','acc','pos_noise','spd_noise','dist_rcv','pos_jump','pos_pred_err','sp
 rows=[]
 for s in ['E1','E2','E3','E4a']:
     m,pv,pt,t=run(s); te=SET[s][2]
-    if len(te)>100000: te=te.sample(100000,random_state=0)
+    if len(te)>100000: te=te.sample(100000,random_state=SEED)
     y=te.label.values
     for sg in [0,0.01,0.02,0.05,0.1,0.2,0.3]:
         X=te[ALL].copy()
         for f in PH:
-            x=X[f].values.astype(float); ok=(x>=0)&(x<999); x[ok]=np.abs(x[ok]*(1+np.random.default_rng(1).normal(0,sg,ok.sum()))); X[f]=x
+            x=X[f].values.astype(float); ok=(x>=0)&(x<999); x[ok]=np.abs(x[ok]*(1+np.random.default_rng(SEED+1).normal(0,sg,ok.sum()))); X[f]=x
         rows.append(dict(setting=s,sigma=sg,**mets(y,m.predict_proba(X.values)[:,1],t)))
 pd.DataFrame(rows).to_csv(O+'A16b_noise.csv',index=False); print('A16b',flush=True)

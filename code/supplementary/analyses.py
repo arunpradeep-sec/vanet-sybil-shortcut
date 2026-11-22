@@ -19,8 +19,9 @@ S['ds']=np.where(S.subset.str.startswith('ext'),'ext','ng'); S['split']=np.where
 S['g']=S.sender.astype('category').cat.codes
 ext=S[S.ds=='ext'].reset_index(drop=True); E0=ext[ext.split=='0709'].reset_index(drop=True); E1=ext[ext.split=='1416'].reset_index(drop=True)
 NT,NV,NX=[S[(S.ds=='ng')&(S.split==k)].reset_index(drop=True) for k in ['Train','Validation','Test']]
-rng=np.random.default_rng(0)
-def gsplit(D,frac=0.2,seed=0):
+SEED=int(os.environ.get('SEED','0')); rng=np.random.default_rng(SEED)
+def gsplit(D,frac=0.2,seed=None):
+    seed=SEED if seed is None else seed
     return next(GroupShuffleSplit(1,test_size=frac,random_state=seed).split(D,groups=D.g))
 def f1thr(y,p):
     pr,rc,th=precision_recall_curve(y,p); f=2*pr*rc/np.maximum(pr+rc,1e-12); return float(th[np.argmax(f[:-1])])
@@ -28,7 +29,7 @@ def mets(y,p,t):
     yh=p>=t; fp,tp=((yh)&(y==0)).sum(),((yh)&(y==1)).sum(); fpr,tpr,_=roc_curve(y,p)
     return dict(f1=f1_score(y,yh),mcc=matthews_corrcoef(y,yh),auc=roc_auc_score(y,p),ap=average_precision_score(y,p),
       tpr1=float(np.interp(0.01,fpr,tpr)),prec=precision_score(y,yh,zero_division=0),rec=recall_score(y,yh),fpr=fp/max((y==0).sum(),1),brier=brier_score_loss(y,p))
-def hgb(it=300,lr=0.1,seed=0): return HGB(max_iter=it,learning_rate=lr,random_state=seed)
+def hgb(it=300,lr=0.1,seed=None): return HGB(max_iter=it,learning_rate=lr,random_state=SEED if seed is None else seed)
 # settings: (name, train df, val df, test df)
 tr0,va0=gsplit(E0); E0tr,E0va=E0.iloc[tr0],E0.iloc[va0]
 a,b=gsplit(E0tr.reset_index(drop=True)); 
@@ -36,7 +37,8 @@ E0trr=E0tr.reset_index(drop=True); E0trA,E0trV=E0trr.iloc[a],E0trr.iloc[b]
 extr=ext.reset_index(drop=True); a2,b2=gsplit(extr); EXtr,EXva=extr.iloc[a2],extr.iloc[b2]
 SET={'E1':(E0trA,E0trV,E0va),'E2':(E0trA,E0trV,E1),'E3':(NT,NV,NX),'E4a':(EXtr,EXva,NX),'E4b':(NT,NV,ext)}
 R={}
-def run(name,model=None,feats=ALL,ntr=None,seed=0):
+def run(name,model=None,feats=ALL,ntr=None,seed=None):
+    seed=SEED if seed is None else seed
     tr,va,te=SET[name]
     if ntr and ntr<len(tr): tr=tr.iloc[np.random.default_rng(seed).choice(len(tr),ntr,replace=False)]
     m=(model or hgb(seed=seed)).fit(tr[feats].values,tr.label.values)
@@ -59,23 +61,23 @@ pd.DataFrame(rows).to_csv(O+'A1_feature_auc_shift.csv',index=False); print('A1',
 vs=[]
 for ds,D in [('Extension',ext),('NextGen',pd.concat([NT,NV,NX]))]:
     for lab in [0,1]:
-        d=D[D.label==lab].sample(4000,random_state=0)[ALL].copy(); d['ds']=ds; d['label']=lab; vs.append(d)
+        d=D[D.label==lab].sample(4000,random_state=SEED)[ALL].copy(); d['ds']=ds; d['label']=lab; vs.append(d)
 pd.concat(vs).to_csv(O+'A1_violin_sample.csv.gz',index=False)
 # ---------- A2 domain classifier
 ng=pd.concat([NT,NV,NX]); rows=[]
 for lab,nm in [(0,'genuine'),(1,'Sybil'),(None,'all')]:
     X1=ext if lab is None else ext[ext.label==lab]; X2=ng if lab is None else ng[ng.label==lab]
-    n=min(len(X1),len(X2),60000); D=pd.concat([X1.sample(n,random_state=0).assign(dom=0),X2.sample(n,random_state=0).assign(dom=1)]).reset_index(drop=True)
+    n=min(len(X1),len(X2),60000); D=pd.concat([X1.sample(n,random_state=SEED).assign(dom=0),X2.sample(n,random_state=SEED).assign(dom=1)]).reset_index(drop=True)
     for gname,feats in [('all',ALL),('KIN',KIN),('HIST',HIST),('NEIGH',NEIGH)]:
         a,b=gsplit(D,0.3); m=hgb().fit(D.iloc[a][feats].values,D.dom.values[a]); p=m.predict_proba(D.iloc[b][feats].values)[:,1]
         rows.append(dict(subset=nm,features=gname,auc=roc_auc_score(D.dom.values[b],p)))
 pd.DataFrame(rows).to_csv(O+'A2_domain_clf.csv',index=False); print('A2',time.time()-T0,flush=True)
 # ---------- A3 correlations
 for ds,D in [('ext',ext),('ng',ng)]:
-    pd.DataFrame(spearmanr(D[ALL].sample(50000,random_state=0).values).statistic,index=ALL,columns=ALL).to_csv(O+f'A3_spearman_{ds}.csv')
+    pd.DataFrame(spearmanr(D[ALL].sample(50000,random_state=SEED).values).statistic,index=ALL,columns=ALL).to_csv(O+f'A3_spearman_{ds}.csv')
 # ---------- A12 PCA
 from sklearn.decomposition import PCA
-P=pd.concat([ext.sample(6000,random_state=1).assign(ds='Extension'),ng.sample(6000,random_state=1).assign(ds='NextGen')])
+P=pd.concat([ext.sample(6000,random_state=SEED+1).assign(ds='Extension'),ng.sample(6000,random_state=SEED+1).assign(ds='NextGen')])
 Z=StandardScaler().fit_transform(np.sign(P[ALL].values)*np.log1p(np.abs(P[ALL].values))); pca=PCA(2).fit(Z); c=pca.transform(Z)
 pd.DataFrame(dict(pc1=c[:,0],pc2=c[:,1],ds=P.ds.values,label=P.label.values)).to_csv(O+'A12_pca.csv',index=False)
 json.dump(dict(evr=pca.explained_variance_ratio_.tolist()),open(O+'A12_pca.json','w'))
@@ -85,6 +87,7 @@ for k in SET:
     m,pv,pt,t=run(k); y=SET[k][2].label.values; preds[k]=(y,pt,t,m)
     R[k]=mets(y,pt,t); print(k,R[k],flush=True)
 json.dump(R,open(O+'main_metrics.json','w'),indent=1)
+np.savez_compressed(O+'preds_main.npz',**{f'{k}_y':v[0] for k,v in preds.items()},**{f'{k}_p':v[1] for k,v in preds.items()})
 # A7 threshold sweep, A8 calibration, A9 PR, A10 confusion, ROC
 th=np.linspace(0.01,0.99,99); sw=[]; cal=[]; prc=[]; cm={}
 for k,(y,p,t,m) in preds.items():
@@ -110,8 +113,8 @@ for k in ['E1','E3']:
 pd.DataFrame(rows).to_csv(O+'A16_noise.csv',index=False); print('A16',time.time()-T0,flush=True)
 # ---------- A13 top-k features
 from sklearn.inspection import permutation_importance
-y,p,t,m=preds['E1']; te=SET['E1'][2].sample(20000,random_state=0)
-pi=permutation_importance(m,te[ALL].values,te.label.values,scoring='roc_auc',n_repeats=3,random_state=0,n_jobs=1)
+y,p,t,m=preds['E1']; te=SET['E1'][2].sample(20000,random_state=SEED)
+pi=permutation_importance(m,te[ALL].values,te.label.values,scoring='roc_auc',n_repeats=3,random_state=SEED,n_jobs=1)
 order=[ALL[i] for i in np.argsort(-pi.importances_mean)]
 pd.DataFrame(dict(feature=ALL,imp=pi.importances_mean,sd=pi.importances_std)).to_csv(O+'A13_perm_E1.csv',index=False)
 rows=[]
@@ -125,7 +128,7 @@ for s in ['E1','E3','E4b']:
     for n in [500,1000,2000,5000,10000,20000,50000,100000]:
         if n>len(SET[s][0]): continue
         for rep in range(3):
-            _,pv,pt,tt=run(s,ntr=n,seed=rep); rows.append(dict(setting=s,n=n,rep=rep,**mets(SET[s][2].label.values,pt,tt)))
+            _,pv,pt,tt=run(s,ntr=n,seed=SEED*10+rep); rows.append(dict(setting=s,n=n,rep=rep,**mets(SET[s][2].label.values,pt,tt)))
 pd.DataFrame(rows).to_csv(O+'A4_learning.csv',index=False); print('A4',time.time()-T0,flush=True)
 # ---------- A6 hyperparameter grid
 rows=[]

@@ -5,7 +5,7 @@ from docx.opc.constants import RELATIONSHIP_TYPE as RT
 from lxml import etree
 A='http://schemas.openxmlformats.org/drawingml/2006/main'; R='http://schemas.openxmlformats.org/officeDocument/2006/relationships'
 SV='http://schemas.microsoft.com/office/drawing/2016/SVG/main'
-main=['F01_architecture','S1_system_model','S2_attack_types','A1_feature_auc_shift','A2_domain_classifier','F10_feature_hierarchy','F12_pipeline','F16_roc','F17_group_importance','F20_loto','F21_precision_prevalence','R8_phantom_curves','A4_learning_curve','A13_importance_topk','A8_pr_calibration','A11_delay_pseudonym']
+main=['F01_architecture','S1_system_model','S2_attack_types','A1_feature_auc_shift','A2_domain_classifier','F10_feature_hierarchy','F12_pipeline','F16_roc','F17_group_importance','F20_loto','F21_precision_prevalence','R8_phantom_curves','A4_learning_curve','A13_importance_topk','A8_pr_calibration','A11_delay_pseudonym','R9_robust_ablation','R10_adaptive_attacker']
 supp=['R1_dataset_composition','A1b_violins','A3_correlation','A12_pca','S4_online_state','S3_protocol_matrix','R2_main_results','R3_recall_heatmap','R4_ablation_heatmap','R5_shortcut_fixes','R6_seen_unseen_models','R7_latency','F24_phantom_bars','A5_model_zoo','A6_hparam','A7_threshold_sweep','A10_confusion','A16_noise']
 def embed(path,names,tag):
     d=docx.Document(path); blips=d.element.body.findall('.//{%s}blip'%A)

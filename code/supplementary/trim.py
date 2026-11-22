@@ -4,7 +4,7 @@ from docx.text.paragraph import Paragraph
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 SRC='/mnt/user-data/outputs/Sybil_VANET_manuscript_final.docx'
 F='/home/claude/an/f300/'
-MAIN={1:1,2:2,3:3,5:4,9:5,10:6,12:7,16:8,17:9,20:10,21:11,25:12,27:13,29:14,31:15,33:16}
+MAIN={1:1,2:2,3:3,5:4,9:5,10:6,12:7,16:8,17:9,20:10,21:11,25:12,27:13,29:14,31:15,33:16,35:17,36:18}
 SUPP={4:1,6:2,7:3,8:4,11:5,13:6,14:7,15:8,18:9,19:10,22:11,23:12,24:13,26:14,28:15,30:16,32:17,34:18}
 def lab(n):
     if n in MAIN: return (0,MAIN[n])
@@ -59,8 +59,10 @@ def fix_par(p):
         for r in runs: pos.append(acc); acc+=len(r.text)
 d=docx.Document(SRC); body=d.element.body; kids=list(body.iterchildren())
 P=lambda i: Paragraph(kids[i],d)
+O=lambda i: i+2 if i>=30 else i
 supp_items={1:[98,99,100],2:[114,115,116],3:[117,118,119,120],4:[122,123,124],5:[142,143,144],6:[152,153,154],7:[171,172,173],8:[179,180,181],
  9:[202,203,204],10:[209,210,211],11:[231,232,233],12:[239,240,241],13:[246,247,248],14:[260,261],15:[268,269],16:[277,278],17:[283,284],18:[296,297]}
+supp_items={k:[O(i) for i in v] for k,v in supp_items.items()}
 supp_files={1:'R1_dataset_composition',2:'A1b_violins',3:'A3_correlation',4:'A12_pca',5:'S4_online_state',6:'S3_protocol_matrix',7:'R2_main_results',8:'R3_recall_heatmap',9:'R4_ablation_heatmap',10:'R5_shortcut_fixes',11:'R6_seen_unseen_models',12:'R7_latency',13:'F24_phantom_bars',14:'A5_model_zoo',15:'A6_hparam',16:'A7_threshold_sweep',17:'A10_confusion',18:'A16_noise'}
 # sanity checks
 for k,ids in supp_items.items():
@@ -73,11 +75,12 @@ for k,ids in supp_items.items():
     desc=[P(i).text for i in ids if P(i).text and not re.match(r'Fig\. \d+\.',P(i).text) and not kids[i].xpath('.//w:drawing') and '·' not in P(i).text]
     supp.append((k,cap,desc))
 img_main={66:('F01_architecture',6.3),72:('S1_system_model',6.3),78:('S2_attack_types',6.3),113:('A1_feature_auc_shift',6.3),127:('A2_domain_classifier',4.5),131:('F10_feature_hierarchy',6.3),148:('F12_pipeline',6.3),185:('F16_roc',4.6),191:('F17_group_importance',4.6),215:('F20_loto',4.6),223:('F21_precision_prevalence',4.6),254:('R8_phantom_curves',6.3),265:('A4_learning_curve',4.2),274:('A13_importance_topk',6.3),281:('A8_pr_calibration',6.3),293:('A11_delay_pseudonym',6.3)}
+img_main={O(i):v for i,v in img_main.items()}; img_main[307]=('R9_robust_ablation',6.3); img_main[314]=('R10_adaptive_attacker',6.3)
 for i,(f,w) in img_main.items():
     p=P(i); assert kids[i].xpath('.//w:drawing'),i
     for r in list(p.runs): r._element.getparent().remove(r._element)
     p.add_run().add_picture(F+f+'.png',width=Inches(w)); p.alignment=WD_ALIGN_PARAGRAPH.CENTER
-remove=set(i for ids in supp_items.values() for i in ids)|{67,132,149,186,192,216,224}
+remove=set(i for ids in supp_items.values() for i in ids)|{O(i) for i in (67,132,149,186,192,216,224)}
 for i in sorted(remove,reverse=True): body.remove(kids[i])
 # heading renumber 4.5.4 -> 4.5.3
 for p in d.paragraphs:

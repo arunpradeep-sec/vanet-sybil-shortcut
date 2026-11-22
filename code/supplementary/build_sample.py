@@ -1,6 +1,6 @@
 import glob, os, gc, numpy as np, pandas as pd
 F=os.environ.get('FEAT','../features'); OUT=os.environ.get('OUT','results_supp'); os.makedirs(OUT,exist_ok=True)
-rng=np.random.default_rng(0); out=[]; blk=[]
+rng=np.random.default_rng(int(os.environ.get('SEED','0'))); out=[]; blk=[]
 N={'ext':60000,'Train':30000,'Validation':15000,'Test':50000}
 for p in sorted(glob.glob(F+'/*.pkl.gz')):
     b=os.path.basename(p).replace('.pkl.gz',''); d=pd.read_pickle(p)
