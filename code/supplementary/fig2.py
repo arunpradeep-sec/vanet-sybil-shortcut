@@ -1,7 +1,7 @@
 import matplotlib; matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch, Circle, FancyArrowPatch, Rectangle, Polygon
-plt.rcParams['font.family']='DejaVu Sans'
+plt.rcParams.update({'font.family':'DejaVu Sans','pdf.fonttype':42,'ps.fonttype':42})
 NAVY='#163d6b'; BLUE='#1f6fd1'; RED='#d42020'; GREEN='#1e7a2e'
 fig,ax=plt.subplots(figsize=(14,7.8)); ax.set_xlim(0,18); ax.set_ylim(0,10); ax.axis('off')
 def box(x,y,w,h,fc,ec,lw=1.5,r=0.15):

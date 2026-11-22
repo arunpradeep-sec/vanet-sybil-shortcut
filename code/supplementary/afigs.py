@@ -56,7 +56,7 @@ p=pd.read_csv(O+'A12_pca.csv'); ev=json.load(open(O+'A12_pca.json'))['evr']
 fig,ax=plt.subplots(figsize=(5.0,3.6))
 for ds,mk in [('Extension','o'),('NextGen','^')]:
     for lab,c in [(0,'#1f77b4' if ds=='Extension' else '#2ca02c'),(1,'#d62728' if ds=='Extension' else '#ff7f0e')]:
-        q=p[(p.ds==ds)&(p.label==lab)]; ax.scatter(q.pc1,q.pc2,s=2,alpha=0.35,c=c,marker=mk,label=f'{ds} {"Sybil" if lab else "genuine"}',rasterized=True)
+        q=p[(p.ds==ds)&(p.label==lab)]; ax.scatter(q.pc1,q.pc2,s=2,alpha=0.35,c=c,marker=mk,label=f'{ds} {"Sybil" if lab else "genuine"}')
 ax.set_xlabel(f'PC1 ({ev[0]*100:.1f}% var.)'); ax.set_ylabel(f'PC2 ({ev[1]*100:.1f}% var.)'); leg=ax.legend(frameon=False,fontsize=7,markerscale=4)
 save(fig,'A12_pca')
 # A7 threshold sweep
