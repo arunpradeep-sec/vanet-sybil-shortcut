@@ -48,6 +48,7 @@ All commands are run from `code/`.
 | 1. Features | `python convert_veremi.py` | `../features/*.pkl.gz` (44.3 M messages) | several hours |
 | 2. Main experiments E1-E8, 5 seeds | `bash run_final.sh` | `results_final/final_tables.md`, `final_*.csv` | about 3 h |
 | 3. LSTM baseline, 3 seeds | `python lstm_baseline.py` | `results_lstm/` | about 20 min |
+| 3b. Phantom augmentation (E9) | `python phantom.py --stage prep`, then `--stage eval` (add `--style drift --fracs 0.1 --out results_phantom_drift` for the ablation) | `../features_phantom/`, `results_phantom/` | about 35 min |
 | 4. Latency kit | `python latency_prep.py` | `../latency_kit/` | about 10 min |
 | 5. Latency benchmark | `python3 latency_bench.py` (inside `latency_kit/`, on the target device) | `latency_<host>.json` | 15-20 min on a Pi 4B |
 
@@ -69,6 +70,7 @@ Raspberry Pi OS also `sudo apt install libopenblas0`).
 | `aggregate.py` | Mean +- standard deviation over seeds; writes the final tables |
 | `run_final.sh` | Runs all of the above for seeds 0-4 |
 | `lstm_baseline.py` | LSTM over each pseudonym's last 8 messages against HGB on identical samples |
+| `phantom.py` | E9: synthetic persistent phantoms in the training data (NextGen → Extension; unseen GridSybil) |
 | `latency_prep.py`, `latency_bench.py` | Online feature extraction and per-message inference timing on one CPU core |
 
 ## Results in `results/`
@@ -76,6 +78,7 @@ Raspberry Pi OS also `sudo apt install libopenblas0`).
 * `main/final_tables.md` - every table of Section 7 (mean +- s.d. over 5 seeds); `final_*.csv` - the same as CSV
 * `lstm/` - LSTM against HGB (Table 13)
 * `latency/` - Raspberry Pi 4B and Apple M2 timing (Table 14)
+* `phantom/`, `phantom_drift/` - persistent-phantom augmentation and its drift-only ablation (Table 15)
 * `feature_manifest.csv` - messages, Sybil share, receivers and senders per converted subset
 
 ## Licence
