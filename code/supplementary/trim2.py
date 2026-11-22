@@ -17,11 +17,11 @@ a=idx('7.14 Is the transfer gap'); b=idx('7.15 Which features')
 moved.append(('Section 7.14 (full text): Is the transfer gap a tuning problem?',[txt(kids[j]) for j in range(a+1,b) if txt(kids[j])]))
 rm+=list(range(a,b))
 p=Paragraph(kids[idx('Fig. 13 trains HGB')],d)
-p.add_run(' Tuning does not help either: over a grid of 12 HGB configurations (50–600 iterations, learning rate 0.03–0.3), NextGen-to-Extension MCC stays between 36.0% and 42.1%, while every in-domain configuration lies within 3 points of the best (Supplementary Fig. S15).')
+p.add_run(' Tuning does not help either: over a grid of 12 HGB configurations (50–600 iterations, learning rate 0.03–0.3), NextGen-to-Extension MCC stays between 36.0% and 38.7%, while every in-domain configuration lies within 2.1 points of the best (Supplementary Fig. S15).')
 # 3 section 7.18 noise -> short paragraph
 a=idx('7.18 Robustness to sensor noise'); b=idx('7.19 Summary of findings')
 moved.append(('Section 7.18 (full text): Robustness to sensor noise',[txt(kids[j]) for j in range(a+1,b) if txt(kids[j])]))
-Paragraph(kids[a+1],d).text='Perturbing the eleven continuous physical features of test messages with multiplicative Gaussian noise of up to 10% lowers MCC by at most 0.7 points in every setting; at 30% noise, TPR@1%FPR on Extension falls by 11 points (Supplementary Fig. S18). Robustness to sensor noise is therefore not the limiting factor; robustness to a different attack implementation is.'
+Paragraph(kids[a+1],d).text='Perturbing the eleven continuous physical features of test messages with multiplicative Gaussian noise of up to 10% lowers MCC by at most 0.5 points in every setting; at 30% noise, TPR@1%FPR on Extension falls by 9 points (Supplementary Fig. S18). Robustness to sensor noise is therefore not the limiting factor; robustness to a different attack implementation is.'
 rm+=list(range(a+2,b))
 # 4 section 8.5 -> supplement
 a=idx('8.5 Threats to validity in more detail'); b=idx('8.6 Placing the detector')

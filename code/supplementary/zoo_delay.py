@@ -1,13 +1,13 @@
-exec(open('/home/claude/an/analyses.py').read().split('T0=time.time()')[0])
+exec(open('analyses.py').read().split('T0=time.time()')[0])
 T0=time.time()
 lg=FunctionTransformer(lambda X: np.sign(X)*np.log1p(np.abs(X)))
 Z={'LR':lambda: make_pipeline(lg,StandardScaler(),LogisticRegression(max_iter=500)),
    'NB':lambda: make_pipeline(lg,GaussianNB()),
    'DT':lambda: DecisionTreeClassifier(min_samples_leaf=20,random_state=0),
-   'kNN':lambda: make_pipeline(lg,StandardScaler(),KNeighborsClassifier(15,n_jobs=2)),
+   'kNN':lambda: make_pipeline(lg,StandardScaler(),KNeighborsClassifier(15,n_jobs=-1)),
    'MLP':lambda: make_pipeline(lg,StandardScaler(),MLPClassifier((64,64),early_stopping=True,max_iter=200,random_state=0)),
-   'ET':lambda: ExtraTreesClassifier(100,min_samples_leaf=2,n_jobs=2,random_state=0),
-   'RF':lambda: RandomForestClassifier(100,min_samples_leaf=2,max_samples=0.3,n_jobs=2,random_state=0),
+   'ET':lambda: ExtraTreesClassifier(100,min_samples_leaf=2,n_jobs=-1,random_state=0),
+   'RF':lambda: RandomForestClassifier(100,min_samples_leaf=2,max_samples=0.3,n_jobs=-1,random_state=0),
    'HGB':lambda: hgb()}
 rows=[]
 for s in SET:

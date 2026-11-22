@@ -1,4 +1,4 @@
-exec(open('/home/claude/an/analyses.py').read().split('T0=time.time()')[0])
+exec(open('analyses.py').read().split('T0=time.time()')[0])
 B['ds']=np.where(B.subset.str.startswith('ext'),'ext','ng'); D0=B[B.ds=='ext'].copy()
 D0['typ']=D0.subset.str.replace('ext_','').str[:-5]
 rows=[];curve=[]

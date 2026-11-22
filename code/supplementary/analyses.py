@@ -1,4 +1,4 @@
-import numpy as np, pandas as pd, json, time, sys, warnings
+import numpy as np, pandas as pd, json, time, sys, os, warnings
 warnings.filterwarnings('ignore')
 from sklearn.ensemble import HistGradientBoostingClassifier as HGB, RandomForestClassifier, ExtraTreesClassifier
 from sklearn.linear_model import LogisticRegression
@@ -11,10 +11,10 @@ from sklearn.preprocessing import StandardScaler, FunctionTransformer
 from sklearn.model_selection import GroupShuffleSplit
 from sklearn.metrics import *
 from scipy.stats import ks_2samp, wasserstein_distance, spearmanr
-sys.path.insert(0,'/home/claude/scripts')
+sys.path.insert(0,os.path.dirname(os.path.abspath(__file__)) if '__file__' in globals() else '.'); sys.path.insert(0,'.')
 from experiments import KIN,HIST,NEIGH,ALL
-O='/home/claude/an/out/'; import os; os.makedirs(O,exist_ok=True)
-S=pd.read_pickle('/home/claude/an/sample.pkl'); B=pd.read_pickle('/home/claude/an/blocks.pkl')
+OUT=os.environ.get('OUT','results_supp'); O=OUT+'/'; os.makedirs(O,exist_ok=True)
+S=pd.read_pickle(O+'sample.pkl'); B=pd.read_pickle(O+'blocks.pkl')
 S['ds']=np.where(S.subset.str.startswith('ext'),'ext','ng'); S['split']=np.where(S.ds=='ext',S.subset.str[-4:],S.subset.str.split('_').str[-1])
 S['g']=S.sender.astype('category').cat.codes
 ext=S[S.ds=='ext'].reset_index(drop=True); E0=ext[ext.split=='0709'].reset_index(drop=True); E1=ext[ext.split=='1416'].reset_index(drop=True)
@@ -109,7 +109,6 @@ for k in ['E1','E3']:
         rows.append(dict(setting=k,sigma=s,**mets(y,pp,t)))
 pd.DataFrame(rows).to_csv(O+'A16_noise.csv',index=False); print('A16',time.time()-T0,flush=True)
 # ---------- A13 top-k features
-imp=pd.read_csv('/home/claude/repo/results/main/final_ablation.csv') if False else None
 from sklearn.inspection import permutation_importance
 y,p,t,m=preds['E1']; te=SET['E1'][2].sample(20000,random_state=0)
 pi=permutation_importance(m,te[ALL].values,te.label.values,scoring='roc_auc',n_repeats=3,random_state=0,n_jobs=1)

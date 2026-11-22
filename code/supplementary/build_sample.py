@@ -1,5 +1,5 @@
 import glob, os, gc, numpy as np, pandas as pd
-F='/mnt/user-data/uploads/VANET Paper/features'
+F=os.environ.get('FEAT','../features'); OUT=os.environ.get('OUT','results_supp'); os.makedirs(OUT,exist_ok=True)
 rng=np.random.default_rng(0); out=[]; blk=[]
 N={'ext':60000,'Train':30000,'Validation':15000,'Test':50000}
 for p in sorted(glob.glob(F+'/*.pkl.gz')):
@@ -11,4 +11,4 @@ for p in sorted(glob.glob(F+'/*.pkl.gz')):
         k=d[d.receiver.isin(pick)].copy(); k['subset']=b; blk.append(k)
     print(b,len(d),n,flush=True); del d; gc.collect()
 S=pd.concat(out,ignore_index=True); B=pd.concat(blk,ignore_index=True)
-S.to_pickle('/home/claude/an/sample.pkl'); B.to_pickle('/home/claude/an/blocks.pkl'); print(len(S),len(B))
+S.to_pickle(OUT+'/sample.pkl'); B.to_pickle(OUT+'/blocks.pkl'); print(len(S),len(B))
