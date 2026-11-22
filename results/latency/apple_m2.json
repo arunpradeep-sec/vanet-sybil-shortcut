@@ -1,0 +1,97 @@
+{
+ "platform": {
+  "host": "Aruns-MacBook-Air-M2.local",
+  "board": "",
+  "cpu": "Apple M2",
+  "machine": "arm64",
+  "cores": 8,
+  "python": "3.12.4",
+  "numpy": "2.5.5",
+  "sklearn": "1.9.1",
+  "os": "macOS-27.2-arm64-arm-64bit"
+ },
+ "temp_start_c": null,
+ "throttled_start": "",
+ "train_seconds": {
+  "HGB": 2.5,
+  "RF": 2.9
+ },
+ "model_bytes": {
+  "HGB": 900095,
+  "RF": 53712295
+ },
+ "features_us": {
+  "mean": 4.14,
+  "median": 4.04,
+  "p95": 6.42,
+  "p99": 7.04,
+  "max": 31.62
+ },
+ "messages": 65601,
+ "feature_match": {
+  "all_features_equal_pct": 99.951,
+  "per_feature_mismatch_pct": {
+   "min_dist_other": 0.049
+  }
+ },
+ "single_us": {
+  "HGB": {
+   "mean": 779.92,
+   "median": 776.54,
+   "p95": 792.05,
+   "p99": 903.5,
+   "max": 941.29
+  },
+  "RF": {
+   "mean": 2193.94,
+   "median": 2183.6,
+   "p95": 2244.48,
+   "p99": 2427.76,
+   "max": 4822.67
+  },
+  "HGB_lean": {
+   "mean": 67.11,
+   "median": 66.25,
+   "p95": 74.29,
+   "p99": 82.25,
+   "max": 96.33
+  }
+ },
+ "lean_HGB_max_abs_diff": 3.3306690738754696e-16,
+ "lean_HGB": {
+  "trees": 244,
+  "nodes": 14884,
+  "max_depth": 19
+ },
+ "batch_msgs_per_s": {
+  "HGB": 144423,
+  "RF": 99993
+ },
+ "end_to_end_HGB_us": {
+  "mean": 784.04,
+  "median": 780.67,
+  "p95": 796.72,
+  "p99": 906.25,
+  "max": 952.67
+ },
+ "end_to_end_HGB_lean_us": {
+  "mean": 71.23,
+  "median": 70.5,
+  "p95": 78.12,
+  "p99": 85.0,
+  "max": 101.71
+ },
+ "capacity_msgs_per_s_one_core_lean": 14039,
+ "capacity_msgs_per_s_one_core": 1275,
+ "observed_load_msgs_per_s": {
+  "median": 14,
+  "p99": 48,
+  "max": 58
+ },
+ "mean_neighbour_msgs_in_1s": 22.5,
+ "cpu_utilisation_at_peak_pct": 4.55,
+ "stream_F1_sanity": 86.94,
+ "peak_rss_mb": 522.5,
+ "temp_end_c": null,
+ "throttled_end": ""
+}

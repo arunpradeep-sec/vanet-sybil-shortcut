@@ -1,0 +1,22 @@
+setting_g,feats,f1,mcc,auc,tpr_at_1fpr,seeds
+Ext 0709,only kinematic,76.97 ± 0.00,62.60 ± 0.00,84.94 ± 0.00,55.44 ± 0.00,1
+Ext 1416,only kinematic,77.98 ± 0.00,63.47 ± 0.00,85.38 ± 0.00,56.71 ± 0.00,1
+NG official split,only kinematic,65.75 ± 0.00,0.65 ± 0.00,51.03 ± 0.00,1.91 ± 0.00,1
+Ext 0709,all minus kinematic,93.31 ± 0.00,87.86 ± 0.00,98.55 ± 0.00,78.20 ± 0.00,1
+Ext 1416,all minus kinematic,93.70 ± 0.00,88.15 ± 0.00,98.67 ± 0.00,81.68 ± 0.00,1
+NG official split,all minus kinematic,98.93 ± 0.00,97.90 ± 0.00,99.96 ± 0.00,99.34 ± 0.00,1
+Ext 0709,only history,91.38 ± 0.00,84.38 ± 0.00,95.57 ± 0.00,65.63 ± 0.00,1
+Ext 1416,only history,91.42 ± 0.00,83.98 ± 0.00,95.26 ± 0.00,66.07 ± 0.00,1
+NG official split,only history,98.58 ± 0.00,97.20 ± 0.00,99.43 ± 0.00,86.77 ± 0.00,1
+Ext 0709,all minus history,82.93 ± 0.00,71.95 ± 0.00,90.65 ± 0.00,67.79 ± 0.00,1
+Ext 1416,all minus history,84.59 ± 0.00,73.12 ± 0.00,92.23 ± 0.00,68.80 ± 0.00,1
+NG official split,all minus history,87.23 ± 0.00,74.98 ± 0.00,95.59 ± 0.00,69.39 ± 0.00,1
+Ext 0709,only neighbourhood,73.37 ± 0.00,51.27 ± 0.00,83.48 ± 0.00,34.40 ± 0.00,1
+Ext 1416,only neighbourhood,75.56 ± 0.00,52.87 ± 0.00,84.87 ± 0.00,34.40 ± 0.00,1
+NG official split,only neighbourhood,84.42 ± 0.00,69.72 ± 0.00,94.22 ± 0.00,66.96 ± 0.00,1
+Ext 0709,all minus neighbourhood,92.09 ± 0.00,85.75 ± 0.00,95.84 ± 0.00,73.65 ± 0.00,1
+Ext 1416,all minus neighbourhood,91.76 ± 0.00,84.81 ± 0.00,95.33 ± 0.00,74.71 ± 0.00,1
+NG official split,all minus neighbourhood,98.54 ± 0.00,97.12 ± 0.00,99.40 ± 0.00,85.61 ± 0.00,1
+Ext 0709,new_pseudo + neighbourhood,85.08 ± 0.00,72.95 ± 0.00,93.64 ± 0.00,45.79 ± 0.00,1
+Ext 1416,new_pseudo + neighbourhood,85.38 ± 0.00,72.35 ± 0.00,93.47 ± 0.00,47.45 ± 0.00,1
+NG official split,new_pseudo + neighbourhood,99.26 ± 0.00,98.55 ± 0.00,99.90 ± 0.00,99.58 ± 0.00,1

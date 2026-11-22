@@ -1,0 +1,97 @@
+{
+ "platform": {
+  "host": "arunpradeep",
+  "board": "Raspberry Pi 4 Model B Rev 1.5",
+  "cpu": "Raspberry Pi 4 Model B Rev 1.5",
+  "machine": "aarch64",
+  "cores": 4,
+  "python": "3.11.2",
+  "numpy": "2.4.6",
+  "sklearn": "1.9.1",
+  "os": "Linux-6.12.93+rpt-rpi-v8-aarch64-with-glibc2.36"
+ },
+ "temp_start_c": 37.5,
+ "throttled_start": "throttled=0x0",
+ "train_seconds": {
+  "HGB": 35.6,
+  "RF": 32.6
+ },
+ "model_bytes": {
+  "HGB": 840550,
+  "RF": 48400103
+ },
+ "features_us": {
+  "mean": 32.35,
+  "median": 31.55,
+  "p95": 45.96,
+  "p99": 50.93,
+  "max": 666.92
+ },
+ "messages": 65601,
+ "feature_match": {
+  "all_features_equal_pct": 99.951,
+  "per_feature_mismatch_pct": {
+   "min_dist_other": 0.049
+  }
+ },
+ "single_us": {
+  "HGB": {
+   "mean": 10715.1,
+   "median": 10635.19,
+   "p95": 10964.26,
+   "p99": 12477.16,
+   "max": 17467.6
+  },
+  "RF": {
+   "mean": 24299.82,
+   "median": 23966.45,
+   "p95": 24872.95,
+   "p99": 35569.52,
+   "max": 48428.29
+  },
+  "HGB_lean": {
+   "mean": 739.04,
+   "median": 734.68,
+   "p95": 759.17,
+   "p99": 784.06,
+   "max": 1075.89
+  }
+ },
+ "lean_HGB_max_abs_diff": 3.3306690738754696e-16,
+ "lean_HGB": {
+  "trees": 244,
+  "nodes": 14884,
+  "max_depth": 19
+ },
+ "batch_msgs_per_s": {
+  "HGB": 13185,
+  "RF": 15899
+ },
+ "end_to_end_HGB_us": {
+  "mean": 10747.23,
+  "median": 10666.63,
+  "p95": 11000.48,
+  "p99": 12504.39,
+  "max": 17496.92
+ },
+ "end_to_end_HGB_lean_us": {
+  "mean": 771.18,
+  "median": 769.19,
+  "p95": 795.98,
+  "p99": 820.5,
+  "max": 1115.26
+ },
+ "capacity_msgs_per_s_one_core_lean": 1297,
+ "capacity_msgs_per_s_one_core": 93,
+ "observed_load_msgs_per_s": {
+  "median": 14,
+  "p99": 48,
+  "max": 58
+ },
+ "mean_neighbour_msgs_in_1s": 22.5,
+ "cpu_utilisation_at_peak_pct": 62.33,
+ "stream_F1_sanity": 86.94,
+ "peak_rss_mb": 266.5,
+ "temp_end_c": 44.3,
+ "throttled_end": "throttled=0x0"
+}

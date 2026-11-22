@@ -1,0 +1,10 @@
+VeReMi_Extension/
+VeReMi_NextGen/
+features/
+latency_kit/
+code/results_*/
+venv/
+__pycache__/
+*.pkl.gz
+*.zip
+.DS_Store
