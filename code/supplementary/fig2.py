@@ -1,7 +1,7 @@
 import matplotlib; matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch, Circle, FancyArrowPatch, Rectangle, Polygon
-plt.rcParams.update({'font.family':'DejaVu Sans','pdf.fonttype':42,'ps.fonttype':42})
+plt.rcParams.update({'font.family':'DejaVu Sans','pdf.fonttype':42,'ps.fonttype':42,'svg.fonttype':'none'})
 NAVY='#163d6b'; BLUE='#1f6fd1'; RED='#d42020'; GREEN='#1e7a2e'
 fig,ax=plt.subplots(figsize=(14,7.8)); ax.set_xlim(0,18); ax.set_ylim(0,10); ax.axis('off')
 def box(x,y,w,h,fc,ec,lw=1.5,r=0.15):
@@ -71,5 +71,5 @@ box(11.9,0.15,5.8,1.75,'white',NAVY)
 L=[(BLUE,'-','Genuine trajectory (past)'),(RED,'-','Claimed trajectory of phantoms'),(BLUE,':','Beacon heard (genuine)'),(RED,':','Beacon heard (attacker / phantom)'),(GREEN,'--','Misbehaviour report via RSU → MA')]
 for i,(c,ls,t) in enumerate(L):
     y=1.65-i*0.31; arr((12.05,y),(13.0,y),c,ls=ls,lw=2,ms=12,z=7); ax.text(13.15,y,t,fontsize=9.5,va='center',zorder=7)
-fig.savefig('/home/claude/an/figs/S1_system_model.png',dpi=600,bbox_inches='tight'); fig.savefig('/home/claude/an/figs/S1_system_model.pdf',bbox_inches='tight')
+fig.savefig('/home/claude/an/figs/S1_system_model.png',dpi=600,bbox_inches='tight'); fig.savefig('/home/claude/an/figs/S1_system_model.pdf',bbox_inches='tight'); fig.savefig('/home/claude/an/figs/S1_system_model.svg',bbox_inches='tight')
 fig.savefig('/home/claude/an/web/S1_system_model.png',dpi=200,bbox_inches='tight')
