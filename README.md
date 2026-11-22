@@ -22,7 +22,8 @@ repo/
   features/          written by convert_veremi.py                   (not in git)
 ```
 
-Datasets: see the VeReMi project page, https://veremi-dataset.github.io/. Needed are the eight Extension archives
+Datasets: VeReMi Extension at https://zenodo.org/records/20090854 and VeReMi NextGen at
+https://zenodo.org/records/19665762 (project page: https://veremi-dataset.github.io/). Needed are the eight Extension archives
 `{GridSybil,DataReplaySybil,DoSRandomSybil,DoSDisruptiveSybil}_{0709,1416}.zip` and the four NextGen archives
 `InTAS_{urban,highway}_{2,7}_trafficCongestionSybil.zip`. The zips are read directly; nothing needs unpacking.
 
